@@ -27,10 +27,10 @@
                 </nav>
 
                 <!-- This section is used to input data to create the bar graph-->
-                <section id = "input">
+                <section id = "input" class = "text-active">
 
                     <!-- label for data -->
-                    <div>
+                    <div class = "label">
                         <span> 
                             <label for = "label"> label: </label>
                             <input id = "label" type = "text" required minlength = "1">         
@@ -38,8 +38,8 @@
                     </div>
 
                     <!-- labal colour -->
-                    <div>
-                        <span> 
+                    <div class = "label">
+                        <span > 
                             <label for ="label-colour"> label colour: </label>
                             <input id = "label-colour" list = "colours" required>
                             <datalist id= colours>
@@ -58,8 +58,8 @@
                     </div>
 
                     <!-- value -->
-                    <div>
-                        <span>
+                    <div class = "label">
+                        <span >
                             <label for = "value"> value: </label>
                             <input id = "value" type = "text" required>
                         </span>
@@ -67,7 +67,7 @@
                     
 
                     <!-- bar colour -->
-                    <div>
+                    <div class = "label">
                         <span>
                             <label for = "bar-colour"> bar colour: </label>
                             <input id = "bar-colour" list = "colours" required>
@@ -95,7 +95,7 @@
                 </section>
 
                 <!-- This section will be used to customize the graph-->
-                <section id = "customize">
+                <section id = "customize" class = "text">
 
                     <!-- graph layout -->
                     <div>
@@ -103,7 +103,7 @@
                     </div>
 
                     <!-- choose where to put the value location within the bar -->
-                    <div>
+                    <div class = "label">
                         <span>
                             <label for = "value-location"> value location: </label>
                             <input id = "value-location" list = "location" required>
@@ -116,7 +116,7 @@
                     </div>
 
                     <!-- choose the bar spacing -->
-                    <div>
+                    <div class = "label">
                         <span>
                             <label for = "bar-spacing"> bar spacing: </label>
                             <input id = "bar-spacing" type = "text" >
@@ -124,7 +124,7 @@
                     </div>
 
                     <!-- choose graph direction-->
-                    <div>
+                    <div class = "label">
                         <span>
                             <label for = "graph-direction"> graph direction </label>
                             <input id = "graph-direction" list = "direction" required>
@@ -144,8 +144,16 @@
                         <p> Individual Layout</p>
                     </div>
 
+                    <!-- customize the label name-->
+                    <div class = "label">
+                        <span>
+                            <label for = "label-name-customize"> label name </label>
+                            <input id = "label-name-customize" type = text>
+                        </span>
+                    </div>
+
                     <!-- customize the label colour-->
-                    <div>
+                    <div class = "label">
                         <span>
                             <label for = "label-colour-customize"> label colour </label>
                             <input id = "label-colour-customize" list = "colours">
@@ -153,8 +161,8 @@
                     </div>
 
                     <!-- customize the bar colour -->
-                    <div>
-                        <span>
+                    <div class = "label">
+                        <span >
                             <label for = "bar-colour-customize"> bar colour</label>
                             <input id = "bar-colour-customize" list = "colours">
                         </span>
