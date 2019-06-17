@@ -1,0 +1,53 @@
+body {
+    background-color: beige;
+    padding: 25px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+
+/* styles for data section */
+
+#data {
+    grid-column: 1;
+    border-top: 2px solid black;
+    border-left:2px solid black;
+    border-bottom:2px solid black;
+    padding: 25px;
+}
+
+#navbar {
+    position: -webkit-sticky;
+    top: 0;
+    height: 60px;
+    display: block;
+}
+
+#navbar ul{
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#navbar li{
+    float: left;
+    font-size: 20px;
+    display: block;
+    padding: 14px 20px;
+    border: 2px solid black;
+    border-collapse: separate;
+    border-radius: 5px;
+}
+
+#input {
+    display: block;
+}
+
+#bar-chart {
+    grid-column: 2;
+    border: 2px solid black;
+    width: 100%;
+}
