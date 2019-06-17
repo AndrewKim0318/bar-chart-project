@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+   
+    <head>
+        <meta charset = "UTF-8" name = "viewport" content= "width=device-width, initial-scale= 1.0">
+        <title>
+            Lighthouse Bar Chart Project
+        </title>
+        <link rel= "stylesheet" type ="text/css" href="styles.css">
+        <script src= "index.js"></script>
+    </head>
+   
+    <body>
+        <!-- Create two different section on webpage-->
+        <div id = "grid">
+
+            <!-- Create an input & customize section where you can alter data-->
+            <div id = "data">
+
+                <!-- Create a navigation bar -->
+                <nav id = "navbar">
+                    <ul>
+                        <li data-target= "#input" class = "active"> Input </li>
+                        <li data-target= "#customize"> Customize </li>
+                    </ul>
+                </nav>
+
+                <!-- This section is used to input data to create the bar graph-->
+                <section id = "input">
+
+                    <!-- label for data -->
+                    <div>
+                        <span> 
+                            <label for = "label"> label: </label>
+                            <input id = "label" type = "text" required minlength = "1">         
+                        </span>
+                    </div>
+
+                    <!-- labal colour -->
+                    <div>
+                        <span> 
+                            <label for ="label-colour"> label colour: </label>
+                            <input id = "label-colour" list = "colours" required>
+                            <datalist id= colours>
+                                <option value = "black"></option>
+                                <option value = "white"></option>
+                                <option value = "gray"></option>
+                                <option value = "red"></option>
+                                <option value = "orange"></option>
+                                <option value = "yellow"></option>
+                                <option value = "green"></option>
+                                <option value = "blue"></option>
+                                <option value = "indigo"></option>
+                                <option value = "pink"></option>
+                            </datalist>         
+                        </span>
+                    </div>
+
+                    <!-- value -->
+                    <div>
+                        <span>
+                            <label for = "value"> value: </label>
+                            <input id = "value" type = "text" required>
+                        </span>
+                    </div>
+                    
+
+                    <!-- bar colour -->
+                    <div>
+                        <span>
+                            <label for = "bar-colour"> bar colour: </label>
+                            <input id = "bar-colour" list = "colours" required>
+                        </span>
+                    </div>
+
+                    <!-- an add button to add data that can be used to create the bar chart-->
+                    <input type= "submit" value = "Add">
+
+                    <!-- create a table that updates as you input data to see all the inputted data -->
+                    <div>
+                        <table id = "data-table">
+                            <tr>
+                                <th> label </th>
+                                <th> label colour</th>
+                                <th> value </th>
+                                <th> bar colour </th>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- a create button to generate the bar chart -->
+                    <input type= "submit" value = "Create">
+                    
+                </section>
+
+                <!-- This section will be used to customize the graph-->
+                <section id = "customize">
+
+                    <!-- graph layout -->
+                    <div>
+                        <p> Graph Layout </p>
+                    </div>
+
+                    <!-- choose where to put the value location within the bar -->
+                    <div>
+                        <span>
+                            <label for = "value-location"> value location: </label>
+                            <input id = "value-location" list = "location" required>
+                            <datalist id= location>
+                                <option value = "top"></option>
+                                <option value = "bottom"></option>
+                                <option value = "centre"></option>
+                            </datalist>  
+                        </span>
+                    </div>
+
+                    <!-- choose the bar spacing -->
+                    <div>
+                        <span>
+                            <label for = "bar-spacing"> bar spacing: </label>
+                            <input id = "bar-spacing" type = "text" >
+                        </span>
+                    </div>
+
+                    <!-- choose graph direction-->
+                    <div>
+                        <span>
+                            <label for = "graph-direction"> graph direction </label>
+                            <input id = "graph-direction" list = "direction" required>
+                            <datalist id= direction>
+                                <option value = "vertical"></option>
+                                <option value = "horizontal"></option>
+                            </datalist>
+                        </span>
+                    </div>
+
+                    <div>
+                        <p>Click on a bar to customize each bar individually</p>
+                    </div>
+
+                    <!-- individual bar layout -->
+                    <div>
+                        <p> Individual Layout</p>
+                    </div>
+
+                    <!-- customize the label colour-->
+                    <div>
+                        <span>
+                            <label for = "label-colour-customize"> label colour </label>
+                            <input id = "label-colour-customize" list = "colours">
+                        </span>
+                    </div>
+
+                    <!-- customize the bar colour -->
+                    <div>
+                        <span>
+                            <label for = "bar-colour-customize"> bar colour</label>
+                            <input id = "bar-colour-customize" list = "colours">
+                        </span>
+                    </div>
+
+                    <input type= "submit" value = "Save">
+                </section>
+
+            </div>
+
+            <div id = "bar-chart">
+                <canvas id = "canvas"></canvas>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
