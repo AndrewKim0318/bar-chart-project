@@ -29,19 +29,21 @@
                 <!-- This section is used to input data to create the bar graph-->
                 <section id = "input" class = "text-active">
 
+                    <p> Enter data to create a bar graph </p>
+
                     <!-- label for data -->
                     <div class = "label">
                         <span> 
-                            <label for = "label"> label: </label>
-                            <input id = "label" type = "text" required minlength = "1">         
+                            <label for = "label" class = "label-name"> Label: </label>
+                            <input id = "label" type = "text" class = "label-value" required>         
                         </span>
                     </div>
 
                     <!-- labal colour -->
                     <div class = "label">
                         <span > 
-                            <label for ="label-colour"> label colour: </label>
-                            <input id = "label-colour" list = "colours" required>
+                            <label for ="label-colour" class = "label-name"> Label colour: </label>
+                            <input id = "label-colour" list = "colours" class = "label-value" required>
                             <datalist id= colours>
                                 <option value = "black"></option>
                                 <option value = "white"></option>
@@ -60,8 +62,8 @@
                     <!-- value -->
                     <div class = "label">
                         <span >
-                            <label for = "value"> value: </label>
-                            <input id = "value" type = "text" required>
+                            <label for = "value" class = "label-name"> Value: </label>
+                            <input id = "value" type = "text" class = "label-value" required>
                         </span>
                     </div>
                     
@@ -69,28 +71,28 @@
                     <!-- bar colour -->
                     <div class = "label">
                         <span>
-                            <label for = "bar-colour"> bar colour: </label>
-                            <input id = "bar-colour" list = "colours" required>
+                            <label for = "bar-colour" class = "label-name"> Bar colour: </label>
+                            <input id = "bar-colour" list = "colours" class = "label-value" required>
                         </span>
                     </div>
 
                     <!-- an add button to add data that can be used to create the bar chart-->
-                    <input type= "submit" value = "Add">
+                    <input id = "add" type= "submit" value = "Add">
 
                     <!-- create a table that updates as you input data to see all the inputted data -->
                     <div>
                         <table id = "data-table">
                             <tr>
-                                <th> label </th>
-                                <th> label colour</th>
-                                <th> value </th>
-                                <th> bar colour </th>
+                                <th> Label </th>
+                                <th> Label colour</th>
+                                <th> Value </th>
+                                <th> Bar colour </th>
                             </tr>
                         </table>
                     </div>
 
                     <!-- a create button to generate the bar chart -->
-                    <input type= "submit" value = "Create">
+                    <input id = "create" type= "submit" value = "Create" class = "button">
                     
                 </section>
 
@@ -99,14 +101,14 @@
 
                     <!-- graph layout -->
                     <div>
-                        <p> Graph Layout </p>
+                        <h4> Graph Layout </h4>
                     </div>
 
                     <!-- choose where to put the value location within the bar -->
                     <div class = "label">
                         <span>
-                            <label for = "value-location"> value location: </label>
-                            <input id = "value-location" list = "location" required>
+                            <label for = "value-location" class = "label-name"> Value location: </label>
+                            <input id = "value-location" list = "location" class = "label-value" required >
                             <datalist id= location>
                                 <option value = "top"></option>
                                 <option value = "bottom"></option>
@@ -118,16 +120,16 @@
                     <!-- choose the bar spacing -->
                     <div class = "label">
                         <span>
-                            <label for = "bar-spacing"> bar spacing: </label>
-                            <input id = "bar-spacing" type = "text" >
+                            <label for = "bar-spacing" class = "label-name"> Bar spacing: </label>
+                            <input id = "bar-spacing" type = "text" class = "label-value">
                         </span>
                     </div>
 
                     <!-- choose graph direction-->
                     <div class = "label">
                         <span>
-                            <label for = "graph-direction"> graph direction </label>
-                            <input id = "graph-direction" list = "direction" required>
+                            <label for = "graph-direction" class = "label-name"> Graph direction: </label>
+                            <input id = "graph-direction" list = "direction" required class = "label-value">
                             <datalist id= direction>
                                 <option value = "vertical"></option>
                                 <option value = "horizontal"></option>
@@ -135,40 +137,48 @@
                         </span>
                     </div>
 
+                    <input id = "save" type= "submit" value= "Save" class = "button">
+
                     <div>
                         <p>Click on a bar to customize each bar individually</p>
                     </div>
 
                     <!-- individual bar layout -->
+                    <div class = text-hidden>
+
+                        <h4> Individual Layout</h4>
+
+                        <!-- customize the label name-->
+                        <div class = "label">
+                            <span>
+                                <label for = "label-name-customize" class = "label-name"> Label name: </label>
+                                <input id = "label-name-customize" type = text class = "label-value">
+                            </span>
+                        </div>
+    
+                        <!-- customize the label colour-->
+                        <div class = "label">
+                            <span>
+                                <label for = "label-colour-customize" class = "label-name"> Label colour: </label>
+                                <input id = "label-colour-customize" list = "colours" class = "label-value">
+                            </span>
+                        </div>
+    
+                        <!-- customize the bar colour -->
+                        <div class = "label">
+                            <span >
+                                <label for = "bar-colour-customize" class = "label-name"> Bar colour: </label>
+                                <input id = "bar-colour-customize" list = "colours" class = "label-value">
+                            </span>
+                        </div>
+                    </div>
+
                     <div>
-                        <p> Individual Layout</p>
-                    </div>
-
-                    <!-- customize the label name-->
-                    <div class = "label">
                         <span>
-                            <label for = "label-name-customize"> label name </label>
-                            <input id = "label-name-customize" type = text>
+                            <input id = "delete" type= "submit" value= "Delete" class = "button">
+                            <input id = "save-all" type= "submit" value = "Save All" class = "button">
                         </span>
                     </div>
-
-                    <!-- customize the label colour-->
-                    <div class = "label">
-                        <span>
-                            <label for = "label-colour-customize"> label colour </label>
-                            <input id = "label-colour-customize" list = "colours">
-                        </span>
-                    </div>
-
-                    <!-- customize the bar colour -->
-                    <div class = "label">
-                        <span >
-                            <label for = "bar-colour-customize"> bar colour</label>
-                            <input id = "bar-colour-customize" list = "colours">
-                        </span>
-                    </div>
-
-                    <input type= "submit" value = "Save">
                 </section>
 
             </div>
