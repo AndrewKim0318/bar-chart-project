@@ -6,7 +6,7 @@ body {
 
 #grid {
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: 2fr 3fr;
     height: 100%;
 }
 
@@ -49,11 +49,11 @@ body {
     border-radius: 5px;
 }
 
-#navbar .active{
+#navbar .nav.active{
     background-color: white;
 }
 
-#navbar .inactive{
+#navbar .nav{
     background-color: darkgrey
 }
 
@@ -83,12 +83,12 @@ body {
 
 .label span .label-name {
     display: table-cell;
-    width: 25%;
+    width: 30%;
 }
 
 .label span .label-value {
     display: table-cell;
-    width: 50%;
+    width: 95%;
 }
 
 p, h4 {
@@ -118,6 +118,7 @@ th{
 td{
     font-size: 20px;
     text-align: center;
+    font-weight: 200;
 }
 
 table td + td {
