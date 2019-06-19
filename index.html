@@ -20,8 +20,8 @@
                 <!-- Create a navigation bar -->
                 <nav id = "navbar">
                     <ul class = "tabs">
-                        <li data-target= "#input" class = "active"> Input </li>
-                        <li data-target= "#customize" class = "inactive"> Customize </li>
+                        <li data-target= "#input" class = "nav active"> Input </li>
+                        <li data-target= "#customize" class = "nav"> Customize </li>
                     </ul>
                 </nav>
 
@@ -42,19 +42,19 @@
                     <div class = "label">
                         <span > 
                             <label for ="label-colour" class = "label-name"> Label colour: </label>
-                            <input id = "label-colour" list = "colours" class = "label-value" required>
-                            <datalist id= colours>
-                                <option value = "black"></option>
-                                <option value = "white"></option>
-                                <option value = "gray"></option>
-                                <option value = "red"></option>
-                                <option value = "orange"></option>
-                                <option value = "yellow"></option>
-                                <option value = "green"></option>
-                                <option value = "blue"></option>
-                                <option value = "indigo"></option>
-                                <option value = "pink"></option>
-                            </datalist>         
+                            <select id = "label-colours" class = "label-value">
+                                <option value="">--Please choose an option--</option>
+                                <option value = "black"> Black </option>
+                                <option value = "white"> White </option>
+                                <option value = "gray"> Gray </option>
+                                <option value = "red"> Red </option>
+                                <option value = "orange"> Orange </option>
+                                <option value = "yellow"> Yellow</option>
+                                <option value = "green"> Green </option>
+                                <option value = "blue"> Blue </option>
+                                <option value = "indigo"> Indigo</option>
+                                <option value = "pink"> Pink </option>
+                            </select>         
                         </span>
                     </div>
 
@@ -71,7 +71,19 @@
                     <div class = "label">
                         <span>
                             <label for = "bar-colour" class = "label-name"> Bar colour: </label>
-                            <input id = "bar-colour" list = "colours" class = "label-value" required>
+                            <select id = "bar-colours" class = "label-value">
+                                <option value="">--Please choose an option--</option>
+                                <option value = "black"> Black </option>
+                                <option value = "white"> White </option>
+                                <option value = "gray"> Gray </option>
+                                <option value = "red"> Red </option>
+                                <option value = "orange"> Orange </option>
+                                <option value = "yellow"> Yellow</option>
+                                <option value = "green"> Green </option>
+                                <option value = "blue"> Blue </option>
+                                <option value = "indigo"> Indigo</option>
+                                <option value = "pink"> Pink </option>
+                            </select> 
                         </span>
                     </div>
 
@@ -112,12 +124,11 @@
                     <div class = "label">
                         <span>
                             <label for = "value-location" class = "label-name"> Value location: </label>
-                            <input id = "value-location" list = "location" class = "label-value" required >
-                            <datalist id= location>
-                                <option value = "top"></option>
-                                <option value = "bottom"></option>
-                                <option value = "centre"></option>
-                            </datalist>  
+                            <select id = "value-location" class = "label-value">
+                                    <option value = "top"> Top </option>
+                                    <option value = "bottom"> Bottom </option>
+                                    <option value = "centre"> Centre </option>
+                            </select>
                         </span>
                     </div>
 
@@ -125,7 +136,11 @@
                     <div class = "label">
                         <span>
                             <label for = "bar-spacing" class = "label-name"> Bar spacing: </label>
-                            <input id = "bar-spacing" type = "text" class = "label-value">
+                            <select id = "bar-spacing" class = "label-value">
+                                    <option value = "small"> Small </option>
+                                    <option value = "medium"> Medium </option>
+                                    <option value = "large"> Large </option>
+                            </select>
                         </span>
                     </div>
 
@@ -133,11 +148,10 @@
                     <div class = "label">
                         <span>
                             <label for = "graph-direction" class = "label-name"> Graph direction: </label>
-                            <input id = "graph-direction" list = "direction" required class = "label-value">
-                            <datalist id= direction>
-                                <option value = "vertical"></option>
-                                <option value = "horizontal"></option>
-                            </datalist>
+                            <select id = "graph-direction" class = "label-value">
+                                    <option value = "vertical"> Vertical </option>
+                                    <option value = "horizontal"> Horizontal </option>
+                            </select>
                         </span>
                     </div>
 
@@ -166,7 +180,19 @@
                         <div class = "label">
                             <span>
                                 <label for = "label-colour-customize" class = "label-name"> Label colour: </label>
-                                <input id = "label-colour-customize" list = "colours" class = "label-value">
+                                <select id = "label-colour-customize" class = "label-value">
+                                    <option value="">--Please choose an option--</option>
+                                    <option value = "black"> Black </option>
+                                    <option value = "white"> White </option>
+                                    <option value = "gray"> Gray </option>
+                                    <option value = "red"> Red </option>
+                                    <option value = "orange"> Orange </option>
+                                    <option value = "yellow"> Yellow</option>
+                                    <option value = "green"> Green </option>
+                                    <option value = "blue"> Blue </option>
+                                    <option value = "indigo"> Indigo</option>
+                                    <option value = "pink"> Pink </option>
+                                </select>
                             </span>
                         </div>
     
@@ -174,7 +200,19 @@
                         <div class = "label">
                             <span >
                                 <label for = "bar-colour-customize" class = "label-name"> Bar colour: </label>
-                                <input id = "bar-colour-customize" list = "colours" class = "label-value">
+                                <select id = "bar-colour-customize" class = "label-value">
+                                    <option value="">--Please choose an option--</option>
+                                    <option value = "black"> Black </option>
+                                    <option value = "white"> White </option>
+                                    <option value = "gray"> Gray </option>
+                                    <option value = "red"> Red </option>
+                                    <option value = "orange"> Orange </option>
+                                    <option value = "yellow"> Yellow</option>
+                                    <option value = "green"> Green </option>
+                                    <option value = "blue"> Blue </option>
+                                    <option value = "indigo"> Indigo</option>
+                                    <option value = "pink"> Pink </option>
+                                </select>
                             </span>
                         </div>
                     
