@@ -8,7 +8,6 @@
             Lighthouse Bar Chart Project
         </title>
         <link rel= "stylesheet" type ="text/css" href="styles.css">
-        <script src= "index.js"></script>
     </head>
    
     <body>
@@ -20,14 +19,14 @@
 
                 <!-- Create a navigation bar -->
                 <nav id = "navbar">
-                    <ul>
+                    <ul class = "tabs">
                         <li data-target= "#input" class = "active"> Input </li>
-                        <li data-target= "#customize"> Customize </li>
+                        <li data-target= "#customize" class = "inactive"> Customize </li>
                     </ul>
                 </nav>
 
                 <!-- This section is used to input data to create the bar graph-->
-                <section id = "input" class = "text-active">
+                <section id = "input" class = "text active">
 
                     <p> Enter data to create a bar graph </p>
 
@@ -178,14 +177,15 @@
                                 <input id = "bar-colour-customize" list = "colours" class = "label-value">
                             </span>
                         </div>
+                    
+                        <div class = "button">
+                            <span>
+                                <input id = "delete" type= "submit" value= "Delete">
+                                <input id = "save-all" type= "submit" value = "Save All">
+                            </span>
+                        </div>
                     </div>
 
-                    <div class = "button">
-                        <span>
-                            <input id = "delete" type= "submit" value= "Delete">
-                            <input id = "save-all" type= "submit" value = "Save All">
-                        </span>
-                    </div>
                 </section>
 
             </div>
@@ -196,6 +196,7 @@
 
         </div>
 
+        <script src= "index.js"></script>
     </body>
 
 </html>

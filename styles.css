@@ -19,7 +19,6 @@ body {
     border-bottom:2px solid black;
     height: 100%;
     padding: 25px;
-    background-color: white;
 }
 
 #input {
@@ -50,8 +49,17 @@ body {
     border-radius: 5px;
 }
 
-#data .text-active {
+#navbar .active{
+    background-color: white;
+}
+
+#navbar .inactive{
+    background-color: darkgrey
+}
+
+#data .text.active {
     display: block;
+    background-color: white;
 }
 
 #data .text {
