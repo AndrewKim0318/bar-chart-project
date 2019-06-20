@@ -61,10 +61,10 @@ function addData(){
        
         if (data.length === 0){
             //Create a new table row when the add button is pushed so the user can see what has been inputted so far
-            const newRow = document.createElement("tr");
+            let newRow = document.createElement("tr");
             //create a new column for each input
             for ( let i = 0; i< inputData.length; i++){
-                const newCell = document.createElement("td");
+                let newCell = document.createElement("td");
                 newCell.appendChild(document.createTextNode(inputData[i]));
                 newRow.appendChild(newCell);
             }
@@ -77,10 +77,10 @@ function addData(){
                     break;
                 } else {
                     //Create a new table row when the add button is pushed so the user can see what has been inputted so far
-                    const newRow = document.createElement("tr");
+                    let newRow = document.createElement("tr");
                     //create a new column for each input
                     for ( let i = 0; i< inputData.length; i++){
-                        const newCell = document.createElement("td");
+                        let newCell = document.createElement("td");
                         newCell.appendChild(document.createTextNode(inputData[i]));
                         newRow.appendChild(newCell);
                     }
@@ -104,6 +104,14 @@ addButton.addEventListener("click", addData)
 const createButton = document.querySelector("#create");
 
 function createGraph(){
+    // Find the largest value in the data set
+    let largestValue = 0;
+    for (let i = 0; i< data.length; i++){
+        if(data[i][2] > largestValue){
+            largestValue = data[i][2];
+        }
+    }
+
     // create variables for graph title, x-axis label, and y-axis label
     let graphTitle = document.getElementById("graph-title").value;
     let xAxisLabel = document.getElementById("x-axis-label").value;
@@ -113,9 +121,23 @@ function createGraph(){
     if (graphTitle === "" || xAxisLabel === "" || yAxisLabel === ""){
         alert ("One or more necessary information is missing");
     } else {
-        for (let i =0; i < data.length; i++){
+        const barChart = document.createElement('table');
+        // Create a space for the title
+        let titleRow = document.createElement('tr');
+        let titleData = document.createElement('th');
+        // Create the title
+        titleData.appendChild(document.createTextNode(graphTitle));
+        titleData.setAttribute('colspan', data.length);
+        titleData.setAttribute('class', 'chart-title');
+        titleRow.appendChild(titleData);
+        barChart.appendChild(titleRow);
 
+        //Start creating the bar chart
+        for ( let i = 0; i < data.length; i++){
+            
         }
+
+
     }
 }
 
