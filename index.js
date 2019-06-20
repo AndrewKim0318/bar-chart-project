@@ -31,6 +31,7 @@ tabs.addEventListener("click", changeText);
 // Gathering data
 
 let data = [];
+let previousLabels = [];
 
 const addButton = document.querySelector("#add");
 
@@ -40,16 +41,21 @@ function addData(){
     const table = document.getElementById("data-table");
     let label = document.getElementById("label").value;
     let labelColour = document.getElementById("label-colour").value;
-    let value = document.getElementById("value").value;
+    let value = parseInt(document.getElementById("value").value, 10);
     let barColour = document.getElementById("bar-colour").value;
     let inputData = [];
 
     // If any of the inputs are missing, alert user
     if (label === "" || labelColour === "" || value === "" || barColour === ""){
         alert("One or more necessary information is missing");
+    } else if (isNaN(value) === true){ //if value is not a number, alert user
+        alert ("The input for value is not a number");
+    } else if ( previousLabels.includes(label) === true){ // if label has already been used, alert user
+        alert ("The label has already been used");
     } else {
         //push all the inputs into an array then clear the input text boxes
         inputData.push(label);
+        previousLabels.push(label);
         inputData.push(labelColour);
         inputData.push(value);
         inputData.push(barColour);
@@ -58,38 +64,16 @@ function addData(){
         document.getElementById("value").value = "";
         document.getElementById("bar-colour").value = "";
 
-       
-        if (data.length === 0){
-            //Create a new table row when the add button is pushed so the user can see what has been inputted so far
-            let newRow = document.createElement("tr");
-            //create a new column for each input
-            for ( let i = 0; i< inputData.length; i++){
-                let newCell = document.createElement("td");
-                newCell.appendChild(document.createTextNode(inputData[i]));
-                newRow.appendChild(newCell);
-            }
-            table.appendChild(newRow);
-        } else {
-            //If the label is repeated, alert user
-            for (let i =0; i<data.length; i++){
-                if (data[i].includes(inputData[0])){
-                    alert ("label has already been used");
-                    break;
-                } else {
-                    //Create a new table row when the add button is pushed so the user can see what has been inputted so far
-                    let newRow = document.createElement("tr");
-                    //create a new column for each input
-                    for ( let i = 0; i< inputData.length; i++){
-                        let newCell = document.createElement("td");
-                        newCell.appendChild(document.createTextNode(inputData[i]));
-                        newRow.appendChild(newCell);
-                    }
-                    table.appendChild(newRow);
-                }
-            }
+        //Create a new table row when the add button is pushed so the user can see what has been inputted so far
+        let newRow = document.createElement("tr");
+        //create a new column for each input
+        for ( let i = 0; i< inputData.length; i++){
+            let newCell = document.createElement("td");
+            newCell.appendChild(document.createTextNode(inputData[i]));
+            newRow.appendChild(newCell);
         }
-
-    }
+        table.appendChild(newRow);
+        } 
 
     //Create a nested array to access different data for customization
     data.push(inputData);
@@ -97,7 +81,7 @@ function addData(){
 }
 
 //when add button is clicked, add the data into an array to find the values later
-addButton.addEventListener("click", addData)
+addButton.addEventListener("click", addData);
 
 //Create bar graph with given data
 
@@ -112,6 +96,8 @@ function createGraph(){
         }
     }
 
+    console.log(largestValue);
+
     // create variables for graph title, x-axis label, and y-axis label
     let graphTitle = document.getElementById("graph-title").value;
     let xAxisLabel = document.getElementById("x-axis-label").value;
@@ -123,8 +109,8 @@ function createGraph(){
     } else {
         const barChart = document.createElement('table');
         // Create a space for the title
-        let titleRow = document.createElement('tr');
-        let titleData = document.createElement('th');
+        const titleRow = document.createElement('tr');
+        const titleData = document.createElement('th');
         // Create the title
         titleData.appendChild(document.createTextNode(graphTitle));
         titleData.setAttribute('colspan', data.length);
@@ -133,13 +119,22 @@ function createGraph(){
         barChart.appendChild(titleRow);
 
         //Start creating the bar chart
+        let maxHeight = 90;
+        let prefix = "%"
+        let barRow = document.createElement('tr');
+        barRow.style.height = maxHeight + prefix;
         for ( let i = 0; i < data.length; i++){
-            
+            let barData = document.createElement('td');
+            let bar = document.createElement('div');
+            bar.style.backgroundColor = data[i][3];
+            bar.style.height = (maxHeight *(data[i][2]/largestValue)) + prefix;
+            barData.innerText = data[i][2];
+            barData.appendChild(bar);
+            barRow.appendChild(barData)
         }
-
 
     }
 }
-
 createButton.addEventListener("click", createGraph);
+
 
