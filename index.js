@@ -58,23 +58,66 @@ function addData(){
         document.getElementById("value").value = "";
         document.getElementById("bar-colour").value = "";
 
-        //Create a new table row when the add button is pushed so the user can see what has been inputted so far
-        let newRow = document.createElement("tr");
-        //create a new column for each input
-        for ( let i = 0; i< inputData.length; i++){
-            let newCell = document.createElement("td");
-            newCell.appendChild(document.createTextNode(inputData[i]));
-            newRow.appendChild(newCell);
+       
+        if (data.length === 0){
+            //Create a new table row when the add button is pushed so the user can see what has been inputted so far
+            const newRow = document.createElement("tr");
+            //create a new column for each input
+            for ( let i = 0; i< inputData.length; i++){
+                const newCell = document.createElement("td");
+                newCell.appendChild(document.createTextNode(inputData[i]));
+                newRow.appendChild(newCell);
+            }
+            table.appendChild(newRow);
+        } else {
+            //If the label is repeated, alert user
+            for (let i =0; i<data.length; i++){
+                if (data[i].includes(inputData[0])){
+                    alert ("label has already been used");
+                    break;
+                } else {
+                    //Create a new table row when the add button is pushed so the user can see what has been inputted so far
+                    const newRow = document.createElement("tr");
+                    //create a new column for each input
+                    for ( let i = 0; i< inputData.length; i++){
+                        const newCell = document.createElement("td");
+                        newCell.appendChild(document.createTextNode(inputData[i]));
+                        newRow.appendChild(newCell);
+                    }
+                    table.appendChild(newRow);
+                }
+            }
         }
-        table.appendChild(newRow);
+
     }
 
     //Create a nested array to access different data for customization
     data.push(inputData);
-    console.log(data);
+    
 }
 
 //when add button is clicked, add the data into an array to find the values later
 addButton.addEventListener("click", addData)
 
+//Create bar graph with given data
+
+const createButton = document.querySelector("#create");
+
+function createGraph(){
+    // create variables for graph title, x-axis label, and y-axis label
+    let graphTitle = document.getElementById("graph-title").value;
+    let xAxisLabel = document.getElementById("x-axis-label").value;
+    let yAxisLabel = document.getElementById("y-axis-label").value;
+
+    //alert if graph title or x-axis label or y-axis label is missing
+    if (graphTitle === "" || xAxisLabel === "" || yAxisLabel === ""){
+        alert ("One or more necessary information is missing");
+    } else {
+        for (let i =0; i < data.length; i++){
+
+        }
+    }
+}
+
+createButton.addEventListener("click", createGraph);
 
