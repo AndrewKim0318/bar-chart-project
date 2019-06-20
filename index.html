@@ -92,6 +92,30 @@
                         <input id = "add" type= "submit" value = "Add">
                     </div>
 
+                    <!-- Label the title for the graph-->
+                    <div class = "label">
+                        <span >
+                            <label for = "graph-title" class = "label-name"> Graph title: </label>
+                            <input id = "graph-title" type = "text" class = "label-value" required>
+                        </span>
+                    </div>
+
+                    <!-- Label the x-axis -->
+                    <div class = "label">
+                        <span >
+                            <label for = "x-axis-label" class = "label-name"> X-axis label: </label>
+                            <input id = "x-axis-label" type = "text" class = "label-value" required>
+                        </span>
+                    </div>
+
+                    <!-- Label the y-axis -->
+                    <div class = "label">
+                            <span >
+                                <label for = "y-axis-label" class = "label-name"> Y-axis label: </label>
+                                <input id = "y-axis-label" type = "text" class = "label-value" required>
+                            </span>
+                        </div>
+
                     <!-- create a table that updates as you input data to see all the inputted data -->
                     <div>
                         <table id = "data-table">
@@ -156,7 +180,7 @@
                     </div>
 
                     <div class = "button">
-                        <input id = "save" type= "submit" value= "Save" class = "button">
+                        <input id = "update" type= "submit" value= "Update" class = "button">
                     </div>
 
                     <div>
@@ -219,7 +243,7 @@
                         <div class = "button">
                             <span>
                                 <input id = "delete" type= "submit" value= "Delete">
-                                <input id = "save-all" type= "submit" value = "Save All">
+                                <input id = "update-all" type= "submit" value = "Update All">
                             </span>
                         </div>
                     </div>
