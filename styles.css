@@ -91,6 +91,15 @@ body {
     width: 95%;
 }
 
+
+/* customizing the select button */
+.label span .select {
+    display: table-cell;
+    width: 95%;
+    position:relative;
+    border-radius:0;
+}
+
 p, h4 {
     padding: 5px;
     margin: 0;
@@ -116,9 +125,9 @@ th{
 }
 
 td{
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
-    font-weight: 200;
+    font-weight: 100;
 }
 
 table td + td {
