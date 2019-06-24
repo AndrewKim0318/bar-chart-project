@@ -142,6 +142,7 @@ function createGraph(){
             barName.style.color = data[i][1];
             barName.innerText = data[i][0];
             barData.appendChild(barName);
+            barData.style.width = (100 / data.length) + prefix;
 
             barRow.appendChild(barData);
             barChart.appendChild(barRow);
