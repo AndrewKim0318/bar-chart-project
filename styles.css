@@ -111,27 +111,27 @@ p, h4 {
 }
 
 /* styling for the data table */
-table{
+#data-table{
     column-fill: inherit;
     border: 2px solid black;
     border-collapse: collapse;
     width: 100%;
 }
 
-th{
+#data-table th{
     font-size: 20px;
     font-weight: 500;
     border: 2px solid black;
     text-align: center;
 }
 
-td{
+#data-table td{
     font-size: 15px;
     text-align: center;
     font-weight: 100;
 }
 
-table td + td {
+#data-table td + td {
     border-left: 2px solid black;
 }
 
@@ -141,9 +141,37 @@ table td + td {
     height: 90%;
 }
 
+/* Styling for generated bar table */
 #bar-chart {
     grid-column: 2;
     border: 2px solid black;
     height: 100%;
     padding: 25px;
+}
+
+#bar-chart-area {
+    width:100%;
+}
+
+#chart-title {
+    text-align: center;
+}
+
+.bar-row td{
+    vertical-align: bottom;
+}
+
+.individual-bar{
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.bar-name{
+    vertical-align: bottom;
+    text-align: center;
+}
+
+#x-axis-title{
+    text-align: center;
 }

@@ -86,8 +86,13 @@ addButton.addEventListener("click", addData);
 //Create bar graph with given data
 
 const createButton = document.querySelector("#create");
+const childNode = document.querySelector("#barChartArea");
+const barGraph = document.getElementById("bar-chart");
+const barChart = document.createElement('table');
 
 function createGraph(){
+    
+    console.log(barGraph.hasChildNodes(childNode));
     // Find the largest value in the data set
     let largestValue = 0;
     for (let i = 0; i< data.length; i++){
@@ -96,25 +101,22 @@ function createGraph(){
         }
     }
 
-    console.log(largestValue);
-
     // create variables for graph title, x-axis label, and y-axis label
     let graphTitle = document.getElementById("graph-title").value;
     let xAxisLabel = document.getElementById("x-axis-label").value;
     let yAxisLabel = document.getElementById("y-axis-label").value;
 
-    //alert if graph title or x-axis label or y-axis label is missing
-    if (graphTitle === "" || xAxisLabel === "" || yAxisLabel === ""){
-        alert ("One or more necessary information is missing");
-    } else {
-        const barChart = document.createElement('table');
+    //create a function to draw the graph
+    function drawGraph(){
+        barChart.setAttribute('id', 'bar-chart-area');
+        barChart.style.height = "100%";
         // Create a space for the title
         const titleRow = document.createElement('tr');
         const titleData = document.createElement('th');
         // Create the title
         titleData.appendChild(document.createTextNode(graphTitle));
         titleData.setAttribute('colspan', data.length);
-        titleData.setAttribute('class', 'chart-title');
+        titleData.setAttribute('id', 'chart-title');
         titleRow.appendChild(titleData);
         barChart.appendChild(titleRow);
 
@@ -122,19 +124,54 @@ function createGraph(){
         let maxHeight = 90;
         let prefix = "%"
         let barRow = document.createElement('tr');
+        barRow.setAttribute('class', 'bar-row');
         barRow.style.height = maxHeight + prefix;
         for ( let i = 0; i < data.length; i++){
+            //Create the bars
             let barData = document.createElement('td');
             let bar = document.createElement('div');
+            bar.setAttribute('class', 'individual-bar')
             bar.style.backgroundColor = data[i][3];
             bar.style.height = (maxHeight *(data[i][2]/largestValue)) + prefix;
             barData.innerText = data[i][2];
             barData.appendChild(bar);
-            barRow.appendChild(barData)
-        }
 
+            //Label each bar
+            let barName = document.createElement('div');
+            barName.setAttribute('class', 'bar-name');
+            barName.style.color = data[i][1];
+            barName.innerText = data[i][0];
+            barData.appendChild(barName);
+
+            barRow.appendChild(barData);
+            barChart.appendChild(barRow);
+            
+        }
+        barGraph.appendChild(barChart);
+
+        //Create space for the x-axis title
+        let xAxisRow = document.createElement('tr');
+        let xAxisData = document.createElement('td');
+        //Create the x-axis title
+        xAxisData.appendChild(document.createTextNode(xAxisLabel));
+        xAxisData.setAttribute('colspan', data.length);
+        xAxisData.setAttribute('id', 'x-axis-title');
+        xAxisRow.appendChild(xAxisData);
+        barChart.appendChild(xAxisRow);
     }
+
+    //alert if graph title or x-axis label or y-axis label is missing
+    if (graphTitle === "" || xAxisLabel === "" || yAxisLabel === ""){
+        alert ("One or more necessary information is missing");
+    } else {
+        drawGraph();
+    }
+    
 }
+
+//if create is pressed multiple times, remove previously generated bar graphs
 createButton.addEventListener("click", createGraph);
+
+
 
 
