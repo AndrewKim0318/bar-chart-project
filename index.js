@@ -48,10 +48,13 @@ function addData(){
     // If any of the inputs are missing, alert user
     if (label === "" || labelColour === "" || value === "" || barColour === ""){
         alert("One or more necessary information is missing");
+        return data;
     } else if (isNaN(value) === true){ //if value is not a number, alert user
         alert ("The input for value is not a number");
+        return data;
     } else if ( previousLabels.includes(label) === true){ // if label has already been used, alert user
         alert ("The label has already been used");
+        return data;
     } else {
         //push all the inputs into an array then clear the input text boxes
         inputData.push(label);
@@ -77,6 +80,7 @@ function addData(){
 
     //Create a nested array to access different data for customization
     data.push(inputData);
+    return data;
     
 }
 
@@ -133,8 +137,13 @@ function createGraph(){
             bar.setAttribute('class', 'individual-bar')
             bar.style.backgroundColor = data[i][3];
             bar.style.height = (maxHeight *(data[i][2]/largestValue)) + prefix;
-            barData.innerText = data[i][2];
             barData.appendChild(bar);
+
+            //put the value inside the bar
+            let barValue = document.createElement('div');
+            barValue.setAttribute('class', 'bar-value');
+            barValue.innerText = data[i][2];
+            bar.appendChild(barValue);
 
             //Label each bar
             let barName = document.createElement('div');
