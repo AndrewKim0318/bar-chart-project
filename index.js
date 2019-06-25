@@ -75,6 +75,12 @@ function addData(){
             newCell.appendChild(document.createTextNode(inputData[i]));
             newRow.appendChild(newCell);
         }
+        //Add delete button to the input table
+        let deleteButtonLocation = document.createElement("td");
+        let deleteButton = document.createElement('button')
+        deleteButton.innerHTML = "Delete";
+        deleteButtonLocation.appendChild(deleteButton);
+        newRow.appendChild(deleteButtonLocation);
         table.appendChild(newRow);
         } 
 
@@ -90,13 +96,11 @@ addButton.addEventListener("click", addData);
 //Create bar graph with given data
 
 const createButton = document.querySelector("#create");
-const childNode = document.querySelector("#barChartArea");
 const barGraph = document.getElementById("bar-chart");
 const barChart = document.createElement('table');
 
 function createGraph(){
     
-    console.log(barGraph.hasChildNodes(childNode));
     // Find the largest value in the data set
     let largestValue = 0;
     for (let i = 0; i< data.length; i++){
@@ -119,22 +123,43 @@ function createGraph(){
         const titleData = document.createElement('th');
         // Create the title
         titleData.appendChild(document.createTextNode(graphTitle));
-        titleData.setAttribute('colspan', data.length);
+        titleData.setAttribute('colspan', data.length + 1);
         titleData.setAttribute('id', 'chart-title');
         titleRow.appendChild(titleData);
         barChart.appendChild(titleRow);
 
         //Start creating the bar chart
-        let maxHeight = 90;
+        let maxHeight = 95;
         let prefix = "%"
+
+        //Start creating rows for the bar and the bar name
         let barRow = document.createElement('tr');
+        let barNameRow = document.createElement('tr');
+
+        //Set attributes to the rows to add styling
         barRow.setAttribute('class', 'bar-row');
         barRow.style.height = maxHeight + prefix;
+        barNameRow.setAttribute('class', 'bar-name-row');
+
+        //Create space for y-axis-title
+        let yAxisLocation = document.createElement('td');
+        let yAxisData = document.createElement('div');
+        yAxisLocation.setAttribute('id', 'y-axis-location');
+        yAxisData.setAttribute('id', 'y-axis-title');
+        yAxisData.appendChild(document.createTextNode(yAxisLabel));
+        yAxisLocation.appendChild(yAxisData);
+        barRow.appendChild(yAxisLocation);
+
+        //Create an empty space in barNameRow to create space for y-axis-title
+        let emptySpace = document.createElement('td')
+        barNameRow.appendChild(emptySpace);
+
         for ( let i = 0; i < data.length; i++){
             //Create the bars
             let barData = document.createElement('td');
+            barData.setAttribute('class', 'bar-graph-location');
             let bar = document.createElement('div');
-            bar.setAttribute('class', 'individual-bar')
+            bar.setAttribute('class', 'individual-bar');
             bar.style.backgroundColor = data[i][3];
             bar.style.height = (maxHeight *(data[i][2]/largestValue)) + prefix;
             barData.appendChild(bar);
@@ -146,15 +171,18 @@ function createGraph(){
             bar.appendChild(barValue);
 
             //Label each bar
+            let barNameData = document.createElement('td');
             let barName = document.createElement('div');
             barName.setAttribute('class', 'bar-name');
             barName.style.color = data[i][1];
             barName.innerText = data[i][0];
-            barData.appendChild(barName);
-            barData.style.width = (100 / data.length) + prefix;
+            barNameData.appendChild(barName);
+            barNameData.style.width = (100 / data.length) + prefix;
 
             barRow.appendChild(barData);
+            barNameRow.appendChild(barNameData);
             barChart.appendChild(barRow);
+            barChart.appendChild(barNameRow);
             
         }
         barGraph.appendChild(barChart);
@@ -164,7 +192,7 @@ function createGraph(){
         let xAxisData = document.createElement('td');
         //Create the x-axis title
         xAxisData.appendChild(document.createTextNode(xAxisLabel));
-        xAxisData.setAttribute('colspan', data.length);
+        xAxisData.setAttribute('colspan', data.length + 1);
         xAxisData.setAttribute('id', 'x-axis-title');
         xAxisRow.appendChild(xAxisData);
         barChart.appendChild(xAxisRow);
