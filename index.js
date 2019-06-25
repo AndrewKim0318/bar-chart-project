@@ -31,19 +31,42 @@ tabs.addEventListener("click", changeText);
 // Gathering data
 
 let data = [];
-let previousLabels = [];
 
 const addButton = document.querySelector("#add");
 
 function addData(){
 
-    // Create variables and store them into an array
+    // Create variables and arrays to store the variables
     const table = document.getElementById("data-table");
     let label = document.getElementById("label").value;
     let labelColour = document.getElementById("label-colour").value;
     let value = parseInt(document.getElementById("value").value, 10);
     let barColour = document.getElementById("bar-colour").value;
     let inputData = [];
+    let previousLabels = [];
+
+    // Create a function to delete inputted data
+    function deleteData(e){
+
+        console.log(data);
+
+        let parent = e.target.parentElement;
+        let grandparent = parent.parentElement;
+        grandparent.setAttribute('id', 'deleteData');
+        let label = document.getElementById('deleteData').cells[0].innerHTML;
+        table.removeChild(grandparent);
+        
+        //remove the input data from the data array
+        for (let i = 0; i< data.length; i++){
+            if (data[i][0] === label){
+                data.splice(i,1);
+                break;
+            }
+        }
+
+        console.log(data);
+    }
+
 
     // If any of the inputs are missing, alert user
     if (label === "" || labelColour === "" || value === "" || barColour === ""){
@@ -70,6 +93,7 @@ function addData(){
         //Create a new table row when the add button is pushed so the user can see what has been inputted so far
         let newRow = document.createElement("tr");
         //create a new column for each input
+        //Start at i = 1 because id does not need to be included
         for ( let i = 0; i< inputData.length; i++){
             let newCell = document.createElement("td");
             newCell.appendChild(document.createTextNode(inputData[i]));
@@ -79,12 +103,16 @@ function addData(){
         let deleteButtonLocation = document.createElement("td");
         let deleteButton = document.createElement('button')
         deleteButton.innerHTML = "Delete";
+        deleteButton.addEventListener('click', deleteData);
         deleteButtonLocation.appendChild(deleteButton);
         newRow.appendChild(deleteButtonLocation);
+        
+        //Add the newly created row into the table
         table.appendChild(newRow);
         } 
 
     //Create a nested array to access different data for customization
+    
     data.push(inputData);
     return data;
     
